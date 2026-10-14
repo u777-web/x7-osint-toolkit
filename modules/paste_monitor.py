@@ -29,7 +29,7 @@ console = Console(theme=Theme({
 }))
 
 BAR_FMT = "\033[38;5;245m  {desc} |{bar}| {percentage:3.0f}%\033[0m"
-OUT_DIR = Path.home() / ".doxtoolkit" / "exports"
+OUT_DIR = Path.home() / ".osinttoolkit" / "exports"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 STATE_FILE = OUT_DIR / "paste_monitor_seen.json"
 
