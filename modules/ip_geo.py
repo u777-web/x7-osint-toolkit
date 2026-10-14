@@ -30,7 +30,7 @@ CACHE_DIR = Path.home() / ".doxtoolkit" / "ipcache"
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_TTL = 6 * 3600
 
-UA = "Mozilla/5.0 (compatible; doxtoolkit/2.0; +https://localhost)"
+UA = "Mozilla/5.0 (compatible; osinttoolkitt/2.0; +https://localhost)"
 
 
 # ───────────────────────── input ─────────────────────────
