@@ -19,4 +19,10 @@ A modular, command-line OSINT & Reconnaissance suite written in Python.
 ```bash
 git clone https://github.com/u777-web/osint-toolkit.git
 cd osint-toolkit
-<img width="1910" height="812" alt="image" src="https://github.com/user-attachments/assets/98f9dc37-d022-4573-9d19-2525e64f1a2d" />
+```
+
+
+
+
+<img width="1910" height="812" alt="image" src="https://github.com/user-attachments/assets/242941ae-3ff1-47db-932c-5d3f81d3faf4" />
+
