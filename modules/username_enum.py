@@ -43,7 +43,7 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; rv:122.0) Gecko/20100101 Firefox/122.0",
 ]
 
-OUT_DIR = Path.home() / ".doxtoolkit" / "exports"
+OUT_DIR = Path.home() / ".osinttool" / "exports"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -64,7 +64,7 @@ class Platform:
 
 # {u} is replaced with the username.
 PLATFORMS = [
-    # dev
+    # ---------------- dev ----------------
     Platform("GitHub", "https://github.com/{u}", tags=("dev",),
              negative_strings=("not found",)),
     Platform("GitLab", "https://gitlab.com/{u}", tags=("dev",)),
@@ -78,8 +78,20 @@ PLATFORMS = [
     Platform("HackerNews", "https://news.ycombinator.com/user?id={u}",
              tags=("dev",), negative_strings=("no such user",)),
     Platform("Keybase", "https://keybase.io/{u}", tags=("dev",)),
+    Platform("StackOverflow", "https://stackoverflow.com/users/{u}",
+             tags=("dev",), negative_status=(404,)),
+    Platform("HuggingFace", "https://huggingface.co/{u}", tags=("dev",),
+             negative_status=(404,)),
+    Platform("DockerHub", "https://hub.docker.com/u/{u}", tags=("dev",),
+             negative_status=(404,)),
+    Platform("NPM", "https://www.npmjs.com/~{u}", tags=("dev",),
+             negative_status=(404,)),
+    Platform("Pypi", "https://pypi.org/user/{u}/", tags=("dev",),
+             negative_status=(404,)),
+    Platform("Codewars", "https://www.codewars.com/users/{u}", tags=("dev",),
+             negative_status=(404,)),
 
-    # social
+    # ---------------- social ----------------
     Platform("Reddit", "https://www.reddit.com/user/{u}/about.json",
              tags=("social",), negative_status=(404,)),
     Platform("Twitter", "https://x.com/{u}", tags=("social",),
@@ -95,8 +107,18 @@ PLATFORMS = [
     Platform("Pinterest", "https://www.pinterest.com/{u}/", tags=("social",)),
     Platform("Tumblr", "https://{u}.tumblr.com/", tags=("social",)),
     Platform("Mastodon", "https://mastodon.social/@{u}", tags=("social",)),
+    Platform("Xing", "https://www.xing.com/profile/{u}", tags=("social",)),
+    Platform("Threads", "https://www.threads.net/@{u}", tags=("social",),
+             negative_strings=("sorry, this page isn't available",)),
+    Platform("VKontakte", "https://vk.com/{u}", tags=("social",)),
+    Platform("Gab", "https://gab.com/{u}", tags=("social",)),
+    Platform("Minds", "https://www.minds.com/{u}", tags=("social",)),
+    Platform("TruthSocial", "https://truthsocial.com/@{u}", tags=("social",)),
+    Platform("Blogger", "https://{u}.blogspot.com", tags=("social",),
+             negative_strings=("blog not found",)),
+    Platform("Foursquare", "https://foursquare.com/{u}", tags=("social",)),
 
-    # media
+    # ---------------- media ----------------
     Platform("YouTube", "https://www.youtube.com/@{u}", tags=("media",),
              negative_strings=("this page isn't available",)),
     Platform("Twitch", "https://www.twitch.tv/{u}", tags=("media",)),
@@ -105,8 +127,13 @@ PLATFORMS = [
     Platform("Spotify", "https://open.spotify.com/user/{u}", tags=("media",)),
     Platform("LastFM", "https://www.last.fm/user/{u}", tags=("media",)),
     Platform("Bandcamp", "https://bandcamp.com/{u}", tags=("media",)),
+    Platform("Mixcloud", "https://www.mixcloud.com/{u}/", tags=("media",)),
+    Platform("ArtStation", "https://www.artstation.com/{u}", tags=("media",)),
+    Platform("DeviantArt", "https://www.deviantart.com/{u}", tags=("media",)),
+    Platform("Giphy", "https://giphy.com/{u}", tags=("media",)),
+    Platform("CDBaby", "https://store.cdbaby.com/{u}", tags=("media",)),
 
-    # gaming
+    # ---------------- gaming ----------------
     Platform("Steam", "https://steamcommunity.com/id/{u}", tags=("gaming",)),
     Platform("Roblox", "https://www.roblox.com/user.aspx?username={u}",
              tags=("gaming",)),
@@ -114,8 +141,17 @@ PLATFORMS = [
     Platform("PSN", "https://psnprofiles.com/{u}", tags=("gaming",)),
     Platform("Chess", "https://www.chess.com/member/{u}", tags=("gaming",)),
     Platform("Lichess", "https://lichess.org/@/{u}", tags=("gaming",)),
+    Platform("Minecraft", "https://namemc.com/search?q={u}", tags=("gaming",),
+             negative_strings=("no player with this name",)),
+    Platform("Osu", "https://osu.ppy.sh/users/{u}", tags=("gaming",)),
+    Platform("Kongregate", "https://www.kongregate.com/accounts/{u}",
+             tags=("gaming",)),
+    Platform("ItchIO", "https://{u}.itch.io", tags=("gaming",)),
+    Platform("GameJolt", "https://gamejolt.com/@{u}", tags=("gaming",)),
+    Platform("Speedrun", "https://www.speedrun.com/user/{u}",
+             tags=("gaming",)),
 
-    # pro
+    # ---------------- pro ----------------
     Platform("LinkedIn", "https://www.linkedin.com/in/{u}", tags=("pro",),
              negative_status=(404,)),
     Platform("AngelList", "https://angel.co/u/{u}", tags=("pro",)),
@@ -125,7 +161,26 @@ PLATFORMS = [
     Platform("Substack", "https://{u}.substack.com", tags=("pro",)),
     Platform("AboutMe", "https://about.me/{u}", tags=("pro",)),
 
-    # other
+    # ---------------- forums ----------------
+    Platform("Disqus", "https://disqus.com/{u}", tags=("forums",)),
+    Platform("Quora", "https://www.quora.com/profile/{u}", tags=("forums",)),
+    Platform("HackTheBox", "https://app.hackthebox.com/profile/{u}",
+             tags=("forums",)),
+    Platform("TryHackMe", "https://tryhackme.com/p/{u}", tags=("forums",)),
+    Platform("Kaggle", "https://www.kaggle.com/{u}", tags=("forums",),
+             negative_status=(404,)),
+
+    # ---------------- crypto ----------------
+    Platform("Etherscan", "https://etherscan.io/address/{u}",
+             tags=("crypto",)),
+    Platform("OpenSea", "https://opensea.io/{u}", tags=("crypto",),
+             negative_status=(404,)),
+    Platform("Rarible", "https://rarible.com/{u}", tags=("crypto",)),
+    Platform("CoinMarketCap",
+             "https://coinmarketcap.com/community/user/{u}",
+             tags=("crypto",)),
+
+    # ---------------- other ----------------
     Platform("Patreon", "https://www.patreon.com/{u}", tags=("other",)),
     Platform("Kofi", "https://ko-fi.com/{u}", tags=("other",)),
     Platform("BuyMeACoffee", "https://buymeacoffee.com/{u}", tags=("other",)),
@@ -148,8 +203,6 @@ PLATFORMS = [
     Platform("CashApp", "https://cash.app/${u}", tags=("other",)),
     Platform("PayPal", "https://www.paypal.com/paypalme/{u}",
              tags=("other",)),
-
-    # shortform / bio
     Platform("Bitly", "https://bit.ly/{u}", tags=("other",)),
     Platform("Beacons", "https://beacons.ai/{u}", tags=("other",)),
     Platform("Carrd", "https://{u}.carrd.co", tags=("other",)),
