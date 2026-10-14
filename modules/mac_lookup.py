@@ -26,7 +26,7 @@ BAR_FMT = "\033[38;5;245m  {desc} |{bar}| {percentage:3.0f}%\033[0m"
 OUT_DIR = Path.home() / ".doxtoolkit" / "exports"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-UA = "Mozilla/5.0 (compatible; doxtoolkit/2.0)"
+UA = "Mozilla/5.0 (compatible; osinttoolkit/2.0)"
 
 # tiny embedded fallback — most common OUIs seen in the wild
 LOCAL_OUI = {
